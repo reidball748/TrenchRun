@@ -76,7 +76,7 @@ namespace TrenchRun
             } 
 
             player.Play();  
-
+             
             for (int explosion = 1; explosion <= 254; explosion++)
             {
                 Thread.Sleep(1);
