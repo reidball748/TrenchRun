@@ -57,7 +57,7 @@ namespace TrenchRun
                 graphics.DrawEllipse(drawPen, 190, 225, 10, 10);
                 graphics.DrawRectangle(drawPen, 185, 130, 20, 10);
                 graphics.DrawLine(drawPen, 195, 140, 195, 225);
-                graphics.FillRectangle(drawBrush, this.Width - movement, 30, 20, 10);
+                graphics.FillRectangle(drawBrush, this.Width - movement, 30, 20, 10); 
               
                 movement++;
             }
