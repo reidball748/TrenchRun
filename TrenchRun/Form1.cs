@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Reid Ball 
+//November 30 2016
+//Star Wars trench run animaton.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +16,8 @@ using System.Windows.Forms;
 namespace TrenchRun
 {
     public partial class Form1 : Form
-    {
+    { 
+        //Declaring all variables
         Graphics graphics;
         Font titleFont, paraFont;
         SolidBrush drawBrush;
@@ -24,12 +28,11 @@ namespace TrenchRun
         public Form1()
         {
             InitializeComponent();
-            graphics = CreateGraphics();
-            this.Refresh();
         }
 
         private void logoPictureBox_Click(object sender, EventArgs e)
-        {
+        { 
+            //Assigning values to variables
             graphics = CreateGraphics();
             titleFont = new Font("Arial MS", 15.0f, FontStyle.Regular);
             paraFont = new Font("Arial MS", 12.0f, FontStyle.Regular);
@@ -38,17 +41,21 @@ namespace TrenchRun
             movement = 1;
             SoundPlayer player = new SoundPlayer(Properties.Resources.boom);
 
+            //Clearing screen for mission briefing
             logoPictureBox.Visible = false;
 
+            //Mission briefing
             graphics.DrawString("Death Star Attack Plan", titleFont, drawBrush, 85, 50);
             graphics.DrawString("The Death Star has a weak point on the top. \nYour assignment is" +
                 " to drop a bomb down \nthis shaft and cause an explosion that will \ncause a reaction" +
                 " which will result in the end \nof the Death Star and start of the revolution." +
                 "\n\nGood luck, soldier.", paraFont, drawBrush, 43, 100);
             Thread.Sleep(5500);
-
+            
+            //Clearing screen for animation
             graphics.Clear(Color.Black);
 
+            //Animation of fighter going over the Death Star until it reaches the midle of it
             for (fighter = 1; fighter <= 215; fighter++)
             {
                 Thread.Sleep(3);
@@ -60,7 +67,9 @@ namespace TrenchRun
                 graphics.FillRectangle(drawBrush, this.Width - movement, 30, 20, 10); 
               
                 movement++;
-            }
+            } 
+
+            //Animation of bomb dropping and fighter leaving screen
             for (bomb = 40; bomb <= 230; bomb++)
             {
                 Thread.Sleep(3);
@@ -75,8 +84,10 @@ namespace TrenchRun
                 movement++;
             } 
 
+            //Sound of bomb exploding
             player.Play();  
              
+            //Animation of explosion
             for (int explosion = 1; explosion <= 254; explosion++)
             {
                 Thread.Sleep(1);
@@ -91,6 +102,7 @@ namespace TrenchRun
                 graphics.FillEllipse(drawBrush, 193 - explosion / 2, 230 - explosion / 2, 1 + explosion, 1 + explosion);
             }
 
+            //Tell user the mission has been a success
             drawBrush.Color = Color.White;
             graphics.DrawString("MISSION SUCCESS", titleFont, drawBrush, 95, 100);
         }
